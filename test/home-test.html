@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style type="text/css">
+      /* for accessibility, could write iframe styles using js and use target attr in links. 
+      See online demo  */
+      iframe#buffer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: white;
+      }
+
+      div#display {
+        margin: 2em 1em 2em 0;
+        border: dotted 2px #999;
+        padding: 6px 8px;
+        min-height: 200px;
+        display: none; /* until loaded */
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function handleFrame() {
+        console.log("click", document.getElementById("buffer").style.display);
+
+        var oIfr = document.getElementById("buffer");
+        url = "http://localhost:3000?token=xxxxx";
+        oIfr.src = url; // "react-app.html?token=zzzzz";
+        oIfr.style.display = "block";
+      }
+      function getToken() {
+        return "GASXXXYYY";
+      }
+    </script>
+    <h3>PORTAL PRESTADORES -TEST-</h2>
+    <button onclick="handleFrame()">Vista 1</button>
+    <iframe
+      id="buffer"
+      name="buffer"
+      src=""
+      style="position:fixed; top:25%; left:25%; bottom:0; display:none; right:0;
+      width:75%; height:75%; border:none; margin:0; padding:10px;
+      overflow:hidden; z-index:999999;"
+    ></iframe>
+  </body>
+</html>
